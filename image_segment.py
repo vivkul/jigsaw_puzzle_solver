@@ -36,12 +36,9 @@ def merge_image(m,n,image_width, image_height,I):
 
 def split_image(im,m,n,I):
 	w,h=im.size
-	print w
-	print h
 	w_chunk=w/m
 	h_chunk=h/n
-	print w_chunk
-	print h_chunk
+	print I
 	t=n*m+1
 	im_number=range(1,t)
 	k=0
@@ -52,7 +49,7 @@ def split_image(im,m,n,I):
 			lt_w=w_chunk*(j-1)
 			split_name=str(im_number[k])
 			split_name+=img_ext
-			im.crop((lt_w,lt_h,lt_w+w_chunk,lt_h+h_chunk)).save(split_name)
+			im.crop((lt_w,lt_h,min(lt_w+w_chunk,w),min(lt_h+h_chunk,h))).save(split_name)
 			k=k+1
 	merge_image(m,n,w,h,I)		
 
@@ -65,8 +62,11 @@ def image_read(I):
 
 def main():
 	Images=glob.glob('*.JPEG')
+	j=1
 	for I in Images:
+		print j
 		image_read(I)
+		j+=1
 
 if __name__ == "__main__":
 	main()
