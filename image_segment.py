@@ -57,7 +57,12 @@ def image_read(I):
 	im=Image.open(I)
 	m=2
 	n=2
-	split_image(im,m,n,I)
+	try:
+		split_image(im,m,n,I)
+	except:
+		print "error in image"
+		print I
+		print "error handled"
 	del im
 
 def main():
