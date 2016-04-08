@@ -31,6 +31,7 @@ def get_energy_quad(i,j,orientation,im):
 			y_bot=image_height-1
 		y_left=(j%m)*w_chunk1
 		sum_=0
+		h_chunk=min(h_chunk1,h_chunk2)
 		if im_matrix[0,0].size == 1:
 			for l in range(h_chunk):
 				sum_=sum_+np.square(im_matrix[x_top+l,x_right]-im_matrix[y_top+l,y_left])
@@ -39,7 +40,6 @@ def get_energy_quad(i,j,orientation,im):
 				sum_=sum_+sum(np.square(im_matrix[x_top+l,x_right]-im_matrix[y_top+l,y_left]))
 		return sum_/(h_chunk*1.0)
 	else:
-		x_bot=(i/m+1)*h_chunk-1
 		if i/m==0:
 			x_bot=h_chunk1-1
 		else:
@@ -56,6 +56,7 @@ def get_energy_quad(i,j,orientation,im):
 		else:
 			y_right=image_width-1
 		sum_=0
+		w_chunk=min(w_chunk1,w_chunk2)
 		if im_matrix[0,0].size == 1:
 			for l in range(w_chunk):
 				sum_=sum_+np.square(im_matrix[x_bot,x_left+l]-im_matrix[y_top,y_left+l])
