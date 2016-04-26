@@ -1,4 +1,4 @@
-This is multilayer perceptron.
+Here is the code for using LSTM.
 
 First data is prepared from pickle of question and option images using prepare_data_raw_cropped_created_hog.py
 Then the lstm is run using lstm_raw_cropped_created_hog.py
